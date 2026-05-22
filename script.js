@@ -119,16 +119,22 @@ function validateCurrentStep() {
 // Enable or disable the Next Step button visually and logically
 function toggleNextButtonState() {
   const isValid = validateCurrentStep();
-  const nextBtn = document.getElementById('nextBtn');
+  const nextBtn = document.getElementById(`nextBtn-${currentStepIndex}`);
   
-  if (isValid) {
-    nextBtn.disabled = false;
-    nextBtn.classList.remove('bg-neutral-250', 'text-neutral-400', 'cursor-not-allowed', 'pointer-events-none');
-    nextBtn.classList.add('bg-sage-400', 'hover:bg-sage-500', 'text-white', 'shadow-sage-200/50');
-  } else {
-    nextBtn.disabled = true;
-    nextBtn.classList.remove('bg-sage-400', 'hover:bg-sage-500', 'text-white', 'shadow-sage-200/50');
-    nextBtn.classList.add('bg-neutral-250', 'text-neutral-400', 'cursor-not-allowed', 'pointer-events-none');
+  if (nextBtn) {
+    if (isValid) {
+      nextBtn.disabled = false;
+      nextBtn.classList.remove('bg-neutral-200', 'text-neutral-400', 'cursor-not-allowed', 'pointer-events-none');
+      if (currentStepIndex === 12) {
+        nextBtn.classList.add('bg-emerald-600', 'hover:bg-emerald-700', 'text-white', 'shadow-emerald-200/50');
+      } else {
+        nextBtn.classList.add('bg-sage-400', 'hover:bg-sage-500', 'text-white', 'shadow-sage-200/50');
+      }
+    } else {
+      nextBtn.disabled = true;
+      nextBtn.classList.remove('bg-sage-400', 'hover:bg-sage-500', 'bg-emerald-600', 'hover:bg-emerald-700', 'text-white', 'shadow-sage-200/50');
+      nextBtn.classList.add('bg-neutral-200', 'text-neutral-400', 'cursor-not-allowed', 'pointer-events-none');
+    }
   }
 }
 
@@ -136,11 +142,11 @@ function toggleNextButtonState() {
 function highlightActiveButton(el, isActive) {
   if (!el) return;
   if (isActive) {
-    el.classList.remove('border-neutral-200', 'border-neutral-250', 'bg-white', 'text-neutral-600', 'text-neutral-650', 'hover:border-neutral-300');
+    el.classList.remove('border-neutral-200', 'border-neutral-300', 'bg-white', 'text-neutral-600', 'hover:border-neutral-300');
     el.classList.add('border-sage-400', 'bg-sage-50', 'text-sage-800', 'font-semibold', 'shadow-xs');
   } else {
     el.classList.remove('border-sage-400', 'border-sage-500', 'bg-sage-50', 'bg-sage-100', 'text-sage-800', 'text-sage-900', 'font-semibold', 'shadow-xs', 'border-2');
-    el.classList.add('border-neutral-200', 'bg-white', 'text-neutral-650', 'hover:border-neutral-300');
+    el.classList.add('border-neutral-200', 'bg-white', 'text-neutral-600', 'hover:border-neutral-300');
   }
 }
 
@@ -318,42 +324,14 @@ function navigateToStep(targetIndex) {
     stepSubHeaderLabel.textContent = subHeader;
   }
 
-  // Toggle footer structures
-  const backBtn = document.getElementById('backBtn');
-  const backSpacer = document.getElementById('backSpacer');
+  // Toggle reset/restart button
   const resetBtn = document.getElementById('resetBtn');
-
-  if (currentStepIndex === 0) {
-    backBtn.classList.add('hidden');
-    backSpacer.classList.remove('hidden');
-    resetBtn.classList.add('hidden');
-  } else {
-    backBtn.classList.remove('hidden');
-    backSpacer.classList.add('hidden');
-    resetBtn.classList.remove('hidden');
-  }
-
-  // Next Button customization
-  const nextBtnText = document.getElementById('nextBtnText');
-  const btnIcon = document.getElementById('btnIcon');
-
-  if (currentStepIndex === 0) {
-    nextBtnText.textContent = 'Começar';
-  } else if (currentStepIndex >= 1 && currentStepIndex <= 3) {
-    nextBtnText.textContent = 'Próxima etapa';
-  } else if (currentStepIndex === 4) {
-    nextBtnText.textContent = 'Iniciar candidatura';
-  } else if (currentStepIndex === 12) {
-    nextBtnText.textContent = 'ENVIAR CANDIDATURA PELO WHATSAPP';
-  } else {
-    nextBtnText.textContent = 'Avançar';
-  }
-
-  // Update dynamic UMD icons on modification
-  if (currentStepIndex === 12) {
-    btnIcon.setAttribute('data-lucide', 'send');
-  } else {
-    btnIcon.setAttribute('data-lucide', 'chevron-right');
+  if (resetBtn) {
+    if (currentStepIndex === 0) {
+      resetBtn.classList.add('hidden');
+    } else {
+      resetBtn.classList.remove('hidden');
+    }
   }
 
   if (typeof lucide !== 'undefined') {
@@ -455,20 +433,36 @@ Hora do envio: ${timeStr}`;
 // Binds native events to inputs and buttons
 function setupEventListeners() {
   
-  // Navigation footer
-  document.getElementById('backBtn').addEventListener('click', () => {
-    navigateToStep(currentStepIndex - 1);
-  });
-
-  document.getElementById('nextBtn').addEventListener('click', () => {
-    if (!validateCurrentStep()) return;
-
-    if (currentStepIndex === STEPS_ORDER.length - 1) {
-      sendApplicationToWhatsApp();
-    } else {
-      navigateToStep(currentStepIndex + 1);
+  // Welcome start button
+  const welcomeStartBtn = document.getElementById('welcomeStartBtn');
+  if (welcomeStartBtn) {
+    welcomeStartBtn.addEventListener('click', () => {
+      navigateToStep(1);
+    });
+  }
+  
+  // Navigation footer step-specific buttons
+  for (let i = 1; i <= 12; i++) {
+    const bBtn = document.getElementById(`backBtn-${i}`);
+    if (bBtn) {
+      bBtn.addEventListener('click', () => {
+        navigateToStep(currentStepIndex - 1);
+      });
     }
-  });
+
+    const nBtn = document.getElementById(`nextBtn-${i}`);
+    if (nBtn) {
+      nBtn.addEventListener('click', () => {
+        if (!validateCurrentStep()) return;
+
+        if (currentStepIndex === STEPS_ORDER.length - 1) {
+          sendApplicationToWhatsApp();
+        } else {
+          navigateToStep(currentStepIndex + 1);
+        }
+      });
+    }
+  }
 
   // Reset/Restart button
   document.getElementById('resetBtn').addEventListener('click', () => {

@@ -41,14 +41,14 @@
     <!-- Custom styling stylesheet -->
     <link rel="stylesheet" href="./style.css" />
   </head>
-  <body class="min-h-screen w-full flex flex-col p-4 md:p-6 bg-[#F5F5F5] font-sans">
+  <body class="w-full min-h-screen bg-white font-sans px-4 pt-6 pb-20 md:px-6 md:pt-8 md:pb-24 flex flex-col">
     
     <!-- Centered Master Layout wrapper -->
-    <main class="w-full max-w-lg mx-auto mt-2 md:mt-4 mb-8 flex flex-col flex-1 justify-between">
+    <main class="w-full max-w-lg mx-auto flex flex-col flex-1 h-auto min-h-auto">
       
       <div class="flex flex-col">
         <!-- Discrete Top brand indicator -->
-        <div class="flex items-center justify-between px-2 mb-4">
+        <div class="flex items-center justify-between px-1 mb-4">
           <div class="flex items-center gap-1.5 py-1 text-sage-800 font-medium text-xs">
             <i data-lucide="baby" class="w-4 h-4 text-sage-500"></i>
             <span class="font-poppins font-medium">Formulário para babá</span>
@@ -66,37 +66,49 @@
         </div>
 
         <!-- Central Elegance Card Container -->
-        <div class="bg-white rounded-none shadow-sm border border-neutral-200 overflow-hidden flex flex-col transition-all duration-300">
+        <div class="w-full flex flex-col transition-all duration-300">
           
           <!-- Top Progress Bar - Spans entirely left to right -->
-          <div class="w-full bg-neutral-100 h-1.5 relative">
-            <div id="progressBar" class="bg-sage-400 h-1.5 w-0 transition-all duration-350 ease-out"></div>
+          <div class="w-full bg-neutral-100 h-1.5 relative rounded-full mb-6">
+            <div id="progressBar" class="bg-sage-400 h-1.5 w-0 transition-all duration-350 ease-out rounded-full"></div>
           </div>
 
-          <div class="p-6 md:p-8 flex-1 flex flex-col justify-between">
+          <div class="w-full flex flex-col">
             
             <!-- Steps Views Containers (0 to 12) -->
-            <section class="flex-1 flex flex-col justify-center min-h-[280px] md:min-h-[300px]">
+            <section class="w-full flex flex-col justify-start min-h-0 h-auto">
               
               <!-- STEP 0: WELCOME -->
               <div id="step-0" class="step-view text-center pt-2 pb-1">
-                <div class="w-20 h-20 bg-sage-50 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xs border border-sage-100">
-                  <i data-lucide="baby" class="w-10 h-10 text-sage-500"></i>
+                <div class="w-16 h-16 bg-sage-50 rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm border border-sage-100">
+                  <i data-lucide="baby" class="w-8 h-8 text-sage-500"></i>
                 </div>
                 
-                <h1 class="text-2xl md:text-3xl font-semibold tracking-tight text-neutral-800 mb-4 font-poppins">
-                  Candidatura para Vaga de Babá
+                <h1 class="text-xl md:text-2xl font-semibold tracking-tight text-neutral-800 mb-3 font-poppins">
+                  Candidatura para<br />Vaga de Babá
                 </h1>
                 
-                <p class="text-neutral-600 leading-relaxed max-w-md mx-auto text-sm md:text-base mb-4">
+                <p class="text-neutral-600 leading-relaxed max-w-md mx-auto text-xs md:text-sm mb-3.5">
                   Leia atentamente as informações da vaga e os termos apresentados nas próximas etapas.
                 </p>
 
-                <div class="bg-sage-50 border border-sage-100/80 rounded-xl p-4 text-left max-w-sm mx-auto flex items-start gap-3">
-                  <i data-lucide="info" class="w-5 h-5 text-sage-500 shrink-0 mt-0.5"></i>
+                <div class="bg-sage-50 border border-sage-100/80 rounded-xl p-3.5 text-left max-w-sm mx-auto flex items-start gap-2.5 mb-5">
+                  <i data-lucide="info" class="w-4 h-4 text-sage-500 shrink-0 mt-0.5"></i>
                   <span class="text-xs text-sage-800 leading-relaxed font-medium">
                     O preenchimento é rápido e, no final, as respostas serão enviadas de forma organizada pelo seu WhatsApp direto para análise.
                   </span>
+                </div>
+
+                <!-- Integrated "Começar" button directly below info card as requested -->
+                <div class="max-w-sm mx-auto mb-10">
+                  <button
+                    type="button"
+                    id="welcomeStartBtn"
+                    class="w-full min-h-[48px] h-12 bg-sage-400 hover:bg-sage-500 text-white font-semibold rounded-xl text-sm flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 shadow-md active:scale-97 shadow-sage-200/50"
+                  >
+                    <span>Começar</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 shrink-0"></i>
+                  </button>
                 </div>
               </div>
 
@@ -109,46 +121,24 @@
                   <h2 class="text-xl font-semibold text-neutral-800 font-poppins">Sobre a vaga</h2>
                 </div>
 
-                <div class="space-y-4 px-2 text-left text-[14px] text-neutral-700 leading-relaxed">
-                  <div class="flex items-start gap-2.5">
-                    <i data-lucide="map-pin" class="w-5 h-5 text-sage-500 shrink-0 mt-0.5"></i>
-                    <div>
-                      <span class="font-bold text-neutral-800">Local de trabalho:</span>
-                      <p class="text-neutral-600 mt-0.5">Próximo ao Parque da Cidade — Santarém/PA</p>
-                    </div>
+                <div class="space-y-5 px-1 text-left text-[14.5px] text-neutral-700 leading-relaxed font-sans">
+                  <div>
+                    <span class="font-bold text-neutral-800 block mb-0.5">Local de trabalho:</span>
+                    <p class="text-neutral-600">Próximo ao Parque da Cidade – Santarém/PA</p>
                   </div>
 
-                  <div class="flex items-start gap-2.5">
-                    <i data-lucide="baby" class="w-5 h-5 text-sage-500 shrink-0 mt-0.5"></i>
-                    <div>
-                      <span class="font-bold text-neutral-800">Criança:</span>
-                      <p class="text-neutral-600 mt-0.5">Menina de 2 anos</p>
-                    </div>
+                  <div>
+                    <span class="font-bold text-neutral-800 block mb-0.5">Criança:</span>
+                    <p class="text-neutral-600">Menina de 2 anos</p>
                   </div>
 
-                  <div class="flex items-start gap-2.5">
-                    <i data-lucide="clock" class="w-5 h-5 text-sage-500 shrink-0 mt-0.5"></i>
-                    <div>
-                      <span class="font-bold text-neutral-800">Horário:</span>
-                      <ul class="space-y-1.5 mt-1.5 text-neutral-600 text-[13.5px]">
-                        <li class="flex items-start gap-2">
-                          <span class="text-sage-500 shrink-0 select-none">•</span>
-                          <span>Segunda a sexta-feira: 08h30 às 16h30</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                          <span class="text-sage-500 shrink-0 select-none">•</span>
-                          <span>Sábado: 08h30 às 12h30</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                          <span class="text-sage-500 shrink-0 select-none">•</span>
-                          <span>Domingo: Folga</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                          <span class="text-sage-500 shrink-0 select-none">•</span>
-                          <span>Feriados serão avaliados conforme necessidade</span>
-                        </li>
-                      </ul>
-                    </div>
+                  <div>
+                    <span class="font-bold text-neutral-800 block mb-1">Horário:</span>
+                    <ul class="space-y-1 text-neutral-600">
+                      <li>Segunda a sexta: 08h30 às 16h30</li>
+                      <li>Sábado: 08h30 às 12h30</li>
+                      <li>Domingo: Folga</li>
+                    </ul>
                   </div>
                 </div>
 
@@ -158,7 +148,7 @@
                       <input
                         type="checkbox"
                         id="termsAcceptedVaga"
-                        class="peer appearance-none w-5 h-5 border border-neutral-350 rounded-md checked:bg-sage-400 checked:border-sage-400 focus:outline bg-white cursor-pointer transition-all duration-150"
+                        class="peer appearance-none w-5 h-5 border border-neutral-300 rounded-md checked:bg-sage-400 checked:border-sage-400 focus:outline bg-white cursor-pointer transition-all duration-150"
                       />
                       <i data-lucide="check" class="absolute w-3.5 h-3.5 text-white pointer-events-none left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-0 peer-checked:scale-100 transition-transform duration-150"></i>
                     </div>
@@ -166,6 +156,26 @@
                       Li e compreendi as informações da vaga.
                     </span>
                   </label>
+                </div>
+
+                <!-- Navigation footer for Step 1 -->
+                <div class="pt-4 border-t border-neutral-100 flex items-center justify-between gap-3 mt-6">
+                  <button
+                    type="button"
+                    id="backBtn-1"
+                    class="h-11 px-4 rounded-xl border border-neutral-300 text-neutral-600 font-medium text-sm flex items-center justify-center gap-1.5 hover:bg-neutral-50 active:scale-95 transition-all duration-150 cursor-pointer"
+                  >
+                    <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                    <span>Voltar</span>
+                  </button>
+                  <button
+                    type="button"
+                    id="nextBtn-1"
+                    class="h-11 px-5 rounded-xl text-white font-medium text-sm flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 shadow-xs active:scale-97 flex-1 bg-sage-400 hover:bg-sage-500 shadow-sage-200/50"
+                  >
+                    <span id="nextBtnText-1">Próxima etapa</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 shrink-0"></i>
+                  </button>
                 </div>
               </div>
 
@@ -178,15 +188,33 @@
                   <h2 class="text-xl font-semibold text-neutral-800 font-poppins">Responsabilidades</h2>
                 </div>
 
-                <div class="bg-neutral-50 p-5 rounded-xl border border-neutral-100 space-y-3.5 text-left text-sm text-neutral-700">
-                  <div class="flex items-center gap-3">
-                    <span class="w-1.5 h-1.5 bg-sage-500 rounded-full shrink-0"></span>
-                    <span class="font-medium">Cuidar da criança</span>
-                  </div>
-                  <div class="flex items-center gap-3">
-                    <span class="w-1.5 h-1.5 bg-sage-500 rounded-full shrink-0"></span>
-                    <span class="font-medium">Garantir segurança e bem-estar</span>
-                  </div>
+                <div class="px-1 text-left text-[14px] text-neutral-700 leading-relaxed font-sans">
+                  <ul class="space-y-3 text-neutral-600">
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-sage-500 shrink-0 select-none text-base">•</span>
+                      <span>Cuidar da criança</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-sage-500 shrink-0 select-none text-base">•</span>
+                      <span>Garantir segurança e bem-estar</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-sage-500 shrink-0 select-none text-base">•</span>
+                      <span>Preparar refeições simples quando necessário</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-sage-500 shrink-0 select-none text-base">•</span>
+                      <span>Organizar brinquedos e pertences da criança</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-sage-500 shrink-0 select-none text-base">•</span>
+                      <span>Auxiliar na higiene e rotina diária</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-sage-500 shrink-0 select-none text-base">•</span>
+                      <span>Realizar atividades adequadas à idade da criança</span>
+                    </li>
+                  </ul>
                 </div>
 
                 <div class="pt-4 border-t border-neutral-100 text-left">
@@ -195,7 +223,7 @@
                       <input
                         type="checkbox"
                         id="termsAcceptedResponsabilidades"
-                        class="peer appearance-none w-5 h-5 border border-neutral-350 rounded-md checked:bg-sage-400 checked:border-sage-400 focus:outline bg-white cursor-pointer transition-all duration-150"
+                        class="peer appearance-none w-5 h-5 border border-neutral-300 rounded-md checked:bg-sage-400 checked:border-sage-400 focus:outline bg-white cursor-pointer transition-all duration-150"
                       />
                       <i data-lucide="check" class="absolute w-3.5 h-3.5 text-white pointer-events-none left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-0 peer-checked:scale-100 transition-transform duration-150"></i>
                     </div>
@@ -203,6 +231,26 @@
                       Concordo com as responsabilidades da vaga.
                     </span>
                   </label>
+                </div>
+
+                <!-- Navigation footer for Step 2 -->
+                <div class="pt-4 border-t border-neutral-100 flex items-center justify-between gap-3 mt-6">
+                  <button
+                    type="button"
+                    id="backBtn-2"
+                    class="h-11 px-4 rounded-xl border border-neutral-300 text-neutral-600 font-medium text-sm flex items-center justify-center gap-1.5 hover:bg-neutral-50 active:scale-95 transition-all duration-150 cursor-pointer"
+                  >
+                    <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                    <span>Voltar</span>
+                  </button>
+                  <button
+                    type="button"
+                    id="nextBtn-2"
+                    class="h-11 px-5 rounded-xl text-white font-medium text-sm flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 shadow-xs active:scale-97 flex-1 bg-sage-400 hover:bg-sage-500 shadow-sage-200/50"
+                  >
+                    <span id="nextBtnText-2">Próxima etapa</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 shrink-0"></i>
+                  </button>
                 </div>
               </div>
 
@@ -212,18 +260,32 @@
                   <div class="w-12 h-12 bg-sage-50 rounded-full flex items-center justify-center mx-auto mb-2 border border-sage-100 font-poppins">
                     <i data-lucide="calendar-days" class="w-6 h-6 text-sage-500"></i>
                   </div>
-                  <h2 class="text-xl font-semibold text-neutral-800 font-poppins">Compromisso</h2>
+                  <h2 class="text-xl font-semibold text-neutral-800 font-poppins">Compromisso e pontualidade</h2>
                 </div>
 
-                <div class="bg-neutral-50 p-5 rounded-xl border border-neutral-100 space-y-3.5 text-left text-sm text-neutral-700">
-                  <div class="flex items-center gap-3">
-                    <span class="w-1.5 h-1.5 bg-sage-500 rounded-full shrink-0"></span>
-                    <span class="font-medium">Cumprir os horários combinados</span>
-                  </div>
-                  <div class="flex items-center gap-3">
-                    <span class="w-1.5 h-1.5 bg-sage-500 rounded-full shrink-0"></span>
-                    <span class="font-medium">Avisar ausências quando possível</span>
-                  </div>
+                <div class="px-1 text-left text-[14px] text-neutral-700 leading-relaxed font-sans">
+                  <ul class="space-y-3 text-neutral-600">
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-sage-500 shrink-0 select-none text-base">•</span>
+                      <span>Pontualidade é essencial</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-sage-500 shrink-0 select-none text-base">•</span>
+                      <span>Ausências devem ser comunicadas antecipadamente</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-sage-500 shrink-0 select-none text-base">•</span>
+                      <span>Dias não trabalhados poderão gerar desconto proporcional</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-sage-500 shrink-0 select-none text-base">•</span>
+                      <span>Faltas frequentes poderão comprometer a continuidade da contratação</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-sage-500 shrink-0 select-none text-base">•</span>
+                      <span>Trabalho em feriados poderá ser analisado conforme necessidade</span>
+                    </li>
+                  </ul>
                 </div>
 
                 <div class="pt-4 border-t border-neutral-100 text-left">
@@ -232,14 +294,34 @@
                       <input
                         type="checkbox"
                         id="termsAcceptedPontualidade"
-                        class="peer appearance-none w-5 h-5 border border-neutral-350 rounded-md checked:bg-sage-400 checked:border-sage-400 focus:outline bg-white cursor-pointer transition-all duration-150"
+                        class="peer appearance-none w-5 h-5 border border-neutral-300 rounded-md checked:bg-sage-400 checked:border-sage-400 focus:outline bg-white cursor-pointer transition-all duration-150"
                       />
                       <i data-lucide="check" class="absolute w-3.5 h-3.5 text-white pointer-events-none left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-0 peer-checked:scale-100 transition-transform duration-150"></i>
                     </div>
                     <span class="text-sm text-neutral-700 leading-snug group-hover:text-neutral-900 transition-colors duration-155 font-medium">
-                      Compreendi as informações acima.
+                      Li e compreendi estas condições.
                     </span>
                   </label>
+                </div>
+
+                <!-- Navigation footer for Step 3 -->
+                <div class="pt-4 border-t border-neutral-100 flex items-center justify-between gap-3 mt-6">
+                  <button
+                    type="button"
+                    id="backBtn-3"
+                    class="h-11 px-4 rounded-xl border border-neutral-300 text-neutral-600 font-medium text-sm flex items-center justify-center gap-1.5 hover:bg-neutral-50 active:scale-95 transition-all duration-150 cursor-pointer"
+                  >
+                    <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                    <span>Voltar</span>
+                  </button>
+                  <button
+                    type="button"
+                    id="nextBtn-3"
+                    class="h-11 px-5 rounded-xl text-white font-medium text-sm flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 shadow-xs active:scale-97 flex-1 bg-sage-400 hover:bg-sage-500 shadow-sage-200/50"
+                  >
+                    <span id="nextBtnText-3">Próxima etapa</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 shrink-0"></i>
+                  </button>
                 </div>
               </div>
 
@@ -249,18 +331,32 @@
                   <div class="w-12 h-12 bg-sage-50 rounded-full flex items-center justify-center mx-auto mb-2 border border-sage-100 font-poppins">
                     <i data-lucide="shield-check" class="w-6 h-6 text-sage-500"></i>
                   </div>
-                  <h2 class="text-xl font-semibold text-neutral-800 font-poppins">Conduta</h2>
+                  <h2 class="text-xl font-semibold text-neutral-800 font-poppins">Conduta profissional</h2>
                 </div>
 
-                <div class="bg-neutral-50 p-5 rounded-xl border border-neutral-100 space-y-3.5 text-left text-sm text-neutral-700">
-                  <div class="flex items-center gap-3">
-                    <span class="w-1.5 h-1.5 bg-sage-500 rounded-full shrink-0"></span>
-                    <span class="font-medium">Respeito com a criança e a família</span>
-                  </div>
-                  <div class="flex items-center gap-3">
-                    <span class="w-1.5 h-1.5 bg-sage-500 rounded-full shrink-0"></span>
-                    <span class="font-medium">Honestidade e responsabilidade</span>
-                  </div>
+                <div class="px-1 text-left text-[14px] text-neutral-700 leading-relaxed font-sans">
+                  <ul class="space-y-3 text-neutral-600">
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-sage-500 shrink-0 select-none text-base">•</span>
+                      <span>Respeito e paciência com a criança</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-sage-500 shrink-0 select-none text-base">•</span>
+                      <span>Não utilizar agressão física ou verbal</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-sage-500 shrink-0 select-none text-base">•</span>
+                      <span>Não fumar durante o trabalho</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-sage-500 shrink-0 select-none text-base">•</span>
+                      <span>Manter discrição sobre assuntos da família</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-sage-500 shrink-0 select-none text-base">•</span>
+                      <span>Atuar com honestidade e responsabilidade</span>
+                    </li>
+                  </ul>
                 </div>
 
                 <div class="pt-4 border-t border-neutral-100 text-left">
@@ -269,14 +365,34 @@
                       <input
                         type="checkbox"
                         id="termsAcceptedConduta"
-                        class="peer appearance-none w-5 h-5 border border-neutral-350 rounded-md checked:bg-sage-400 checked:border-sage-400 focus:outline bg-white cursor-pointer transition-all duration-150"
+                        class="peer appearance-none w-5 h-5 border border-neutral-300 rounded-md checked:bg-sage-400 checked:border-sage-400 focus:outline bg-white cursor-pointer transition-all duration-150"
                       />
                       <i data-lucide="check" class="absolute w-3.5 h-3.5 text-white pointer-events-none left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-0 peer-checked:scale-100 transition-transform duration-150"></i>
                     </div>
                     <span class="text-sm text-neutral-700 leading-snug group-hover:text-neutral-900 transition-colors duration-155 font-medium">
-                      Concordo com as regras apresentadas.
+                      Concordo com as regras de conduta.
                     </span>
                   </label>
+                </div>
+
+                <!-- Navigation footer for Step 4 -->
+                <div class="pt-4 border-t border-neutral-100 flex items-center justify-between gap-3 mt-6">
+                  <button
+                    type="button"
+                    id="backBtn-4"
+                    class="h-11 px-4 rounded-xl border border-neutral-300 text-neutral-600 font-medium text-sm flex items-center justify-center gap-1.5 hover:bg-neutral-50 active:scale-95 transition-all duration-150 cursor-pointer"
+                  >
+                    <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                    <span>Voltar</span>
+                  </button>
+                  <button
+                    type="button"
+                    id="nextBtn-4"
+                    class="h-11 px-5 rounded-xl text-white font-medium text-sm flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 shadow-xs active:scale-97 flex-1 bg-sage-400 hover:bg-sage-500 shadow-sage-200/50"
+                  >
+                    <span id="nextBtnText-4">Iniciar candidatura</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 shrink-0"></i>
+                  </button>
                 </div>
               </div>
 
@@ -360,13 +476,33 @@
                       Quantos filhos possui?
                     </label>
                     <div class="grid grid-cols-4 gap-2">
-                      <button type="button" data-count="1" class="btnQtdFilhos h-10 flex items-center justify-center rounded-lg border text-xs font-semibold transition-all duration-150 cursor-pointer border-neutral-250 bg-white hover:border-neutral-300 text-neutral-700">1</button>
-                      <button type="button" data-count="2" class="btnQtdFilhos h-10 flex items-center justify-center rounded-lg border text-xs font-semibold transition-all duration-150 cursor-pointer border-neutral-250 bg-white hover:border-neutral-300 text-neutral-700">2</button>
-                      <button type="button" data-count="3" class="btnQtdFilhos h-10 flex items-center justify-center rounded-lg border text-xs font-semibold transition-all duration-150 cursor-pointer border-neutral-250 bg-white hover:border-neutral-300 text-neutral-700">3</button>
-                      <button type="button" data-count="4 ou mais" class="btnQtdFilhos h-10 flex items-center justify-center rounded-lg border text-xs font-semibold transition-all duration-150 cursor-pointer border-neutral-250 bg-white hover:border-neutral-300 text-neutral-700">4+</button>
+                      <button type="button" data-count="1" class="btnQtdFilhos h-10 flex items-center justify-center rounded-lg border text-xs font-semibold transition-all duration-150 cursor-pointer border-neutral-300 bg-white hover:border-neutral-400 text-neutral-700">1</button>
+                      <button type="button" data-count="2" class="btnQtdFilhos h-10 flex items-center justify-center rounded-lg border text-xs font-semibold transition-all duration-150 cursor-pointer border-neutral-300 bg-white hover:border-neutral-400 text-neutral-700">2</button>
+                      <button type="button" data-count="3" class="btnQtdFilhos h-10 flex items-center justify-center rounded-lg border text-xs font-semibold transition-all duration-150 cursor-pointer border-neutral-300 bg-white hover:border-neutral-400 text-neutral-700">3</button>
+                      <button type="button" data-count="4 ou mais" class="btnQtdFilhos h-10 flex items-center justify-center rounded-lg border text-xs font-semibold transition-all duration-150 cursor-pointer border-neutral-300 bg-white hover:border-neutral-400 text-neutral-700">4+</button>
                     </div>
                   </div>
 
+                </div>
+
+                <!-- Navigation footer for Step 5 -->
+                <div class="pt-4 border-t border-neutral-100 flex items-center justify-between gap-3 mt-6">
+                  <button
+                    type="button"
+                    id="backBtn-5"
+                    class="h-11 px-4 rounded-xl border border-neutral-300 text-neutral-600 font-medium text-sm flex items-center justify-center gap-1.5 hover:bg-neutral-50 active:scale-95 transition-all duration-150 cursor-pointer"
+                  >
+                    <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                    <span>Voltar</span>
+                  </button>
+                  <button
+                    type="button"
+                    id="nextBtn-5"
+                    class="h-11 px-5 rounded-xl text-white font-medium text-sm flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 shadow-xs active:scale-97 flex-1 bg-sage-400 hover:bg-sage-500 shadow-sage-200/50"
+                  >
+                    <span id="nextBtnText-5">Avançar</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 shrink-0"></i>
+                  </button>
                 </div>
               </div>
 
@@ -414,6 +550,26 @@
                     />
                   </div>
                 </div>
+
+                <!-- Navigation footer for Step 6 -->
+                <div class="pt-4 border-t border-neutral-100 flex items-center justify-between gap-3 mt-6">
+                  <button
+                    type="button"
+                    id="backBtn-6"
+                    class="h-11 px-4 rounded-xl border border-neutral-300 text-neutral-600 font-medium text-sm flex items-center justify-center gap-1.5 hover:bg-neutral-50 active:scale-95 transition-all duration-150 cursor-pointer"
+                  >
+                    <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                    <span>Voltar</span>
+                  </button>
+                  <button
+                    type="button"
+                    id="nextBtn-6"
+                    class="h-11 px-5 rounded-xl text-white font-medium text-sm flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 shadow-xs active:scale-97 flex-1 bg-sage-400 hover:bg-sage-500 shadow-sage-200/50"
+                  >
+                    <span id="nextBtnText-6">Avançar</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 shrink-0"></i>
+                  </button>
+                </div>
               </div>
 
               <!-- STEP 7: FORM_EXPERIENCE -->
@@ -455,33 +611,53 @@
                       Por quanto tempo trabalhou como babá?
                     </label>
                     <div class="grid grid-cols-1 gap-2">
-                      <button type="button" data-time="Menos de 6 meses" class="btnTempoExp h-10 px-3.5 flex items-center justify-between rounded-lg border text-xs font-medium cursor-pointer border-neutral-250 bg-white text-neutral-700">
+                      <button type="button" data-time="Menos de 6 meses" class="btnTempoExp h-10 px-3.5 flex items-center justify-between rounded-lg border text-xs font-medium cursor-pointer border-neutral-300 bg-white text-neutral-700">
                         <span>Menos de 6 meses</span>
                         <i data-lucide="check" class="w-4 h-4 text-sage-600 hidden"></i>
                       </button>
-                      <button type="button" data-time="De 6 meses a 1 ano" class="btnTempoExp h-10 px-3.5 flex items-center justify-between rounded-lg border text-xs font-medium cursor-pointer border-neutral-250 bg-white text-neutral-700">
+                      <button type="button" data-time="De 6 meses a 1 ano" class="btnTempoExp h-10 px-3.5 flex items-center justify-between rounded-lg border text-xs font-medium cursor-pointer border-neutral-300 bg-white text-neutral-700">
                         <span>De 6 meses a 1 ano</span>
                         <i data-lucide="check" class="w-4 h-4 text-sage-600 hidden"></i>
                       </button>
-                      <button type="button" data-time="De 1 a 2 anos" class="btnTempoExp h-10 px-3.5 flex items-center justify-between rounded-lg border text-xs font-medium cursor-pointer border-neutral-250 bg-white text-neutral-700">
+                      <button type="button" data-time="De 1 a 2 anos" class="btnTempoExp h-10 px-3.5 flex items-center justify-between rounded-lg border text-xs font-medium cursor-pointer border-neutral-300 bg-white text-neutral-700">
                         <span>De 1 a 2 anos</span>
                         <i data-lucide="check" class="w-4 h-4 text-sage-600 hidden"></i>
                       </button>
-                      <button type="button" data-time="De 2 a 3 anos" class="btnTempoExp h-10 px-3.5 flex items-center justify-between rounded-lg border text-xs font-medium cursor-pointer border-neutral-250 bg-white text-neutral-700">
+                      <button type="button" data-time="De 2 a 3 anos" class="btnTempoExp h-10 px-3.5 flex items-center justify-between rounded-lg border text-xs font-medium cursor-pointer border-neutral-300 bg-white text-neutral-700">
                         <span>De 2 a 3 anos</span>
                         <i data-lucide="check" class="w-4 h-4 text-sage-600 hidden"></i>
                       </button>
-                      <button type="button" data-time="De 3 a 5 anos" class="btnTempoExp h-10 px-3.5 flex items-center justify-between rounded-lg border text-xs font-medium cursor-pointer border-neutral-250 bg-white text-neutral-700">
+                      <button type="button" data-time="De 3 a 5 anos" class="btnTempoExp h-10 px-3.5 flex items-center justify-between rounded-lg border text-xs font-medium cursor-pointer border-neutral-300 bg-white text-neutral-700">
                         <span>De 3 a 5 anos</span>
                         <i data-lucide="check" class="w-4 h-4 text-sage-600 hidden"></i>
                       </button>
-                      <button type="button" data-time="Mais de 5 anos" class="btnTempoExp h-10 px-3.5 flex items-center justify-between rounded-lg border text-xs font-medium cursor-pointer border-neutral-250 bg-white text-neutral-700">
+                      <button type="button" data-time="Mais de 5 anos" class="btnTempoExp h-10 px-3.5 flex items-center justify-between rounded-lg border text-xs font-medium cursor-pointer border-neutral-300 bg-white text-neutral-700">
                         <span>Mais de 5 anos</span>
                         <i data-lucide="check" class="w-4 h-4 text-sage-600 hidden"></i>
                       </button>
                     </div>
                   </div>
 
+                </div>
+
+                <!-- Navigation footer for Step 7 -->
+                <div class="pt-4 border-t border-neutral-100 flex items-center justify-between gap-3 mt-6">
+                  <button
+                    type="button"
+                    id="backBtn-7"
+                    class="h-11 px-4 rounded-xl border border-neutral-300 text-neutral-600 font-medium text-sm flex items-center justify-center gap-1.5 hover:bg-neutral-50 active:scale-95 transition-all duration-150 cursor-pointer"
+                  >
+                    <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                    <span>Voltar</span>
+                  </button>
+                  <button
+                    type="button"
+                    id="nextBtn-7"
+                    class="h-11 px-5 rounded-xl text-white font-medium text-sm flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 shadow-xs active:scale-97 flex-1 bg-sage-400 hover:bg-sage-500 shadow-sage-200/50"
+                  >
+                    <span id="nextBtnText-7">Avançar</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 shrink-0"></i>
+                  </button>
                 </div>
               </div>
 
@@ -523,15 +699,35 @@
                       Qual transporte utiliza para se locomover?
                     </label>
                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                      <button type="button" data-trans="Moto" class="btnTransporte h-10 flex items-center justify-center rounded-lg border text-xs font-medium cursor-pointer border-neutral-250 bg-white text-neutral-650">Moto</button>
-                      <button type="button" data-trans="Carro" class="btnTransporte h-10 flex items-center justify-center rounded-lg border text-xs font-medium cursor-pointer border-neutral-250 bg-white text-neutral-650">Carro</button>
-                      <button type="button" data-trans="Bicicleta" class="btnTransporte h-10 flex items-center justify-center rounded-lg border text-xs font-medium cursor-pointer border-neutral-250 bg-white text-neutral-650">Bicicleta</button>
-                      <button type="button" data-trans="Ônibus" class="btnTransporte h-10 flex items-center justify-center rounded-lg border text-xs font-medium cursor-pointer border-neutral-250 bg-white text-neutral-650">Ônibus</button>
-                      <button type="button" data-trans="Aplicativo" class="btnTransporte h-10 flex items-center justify-center rounded-lg border text-xs font-medium cursor-pointer border-neutral-250 bg-white text-neutral-650">Aplicativo</button>
-                      <button type="button" data-trans="Carona" class="btnTransporte h-10 flex items-center justify-center rounded-lg border text-xs font-medium cursor-pointer border-neutral-250 bg-white text-neutral-650">Carona</button>
-                      <button type="button" data-trans="Outro" class="btnTransporte h-10 flex items-center justify-center rounded-lg border text-xs font-medium cursor-pointer border-neutral-250 bg-white text-neutral-650 col-span-2 sm:col-span-1">Outro</button>
+                      <button type="button" data-trans="Moto" class="btnTransporte h-10 flex items-center justify-center rounded-lg border text-xs font-medium cursor-pointer border-neutral-300 bg-white text-neutral-600">Moto</button>
+                      <button type="button" data-trans="Carro" class="btnTransporte h-10 flex items-center justify-center rounded-lg border text-xs font-medium cursor-pointer border-neutral-300 bg-white text-neutral-600">Carro</button>
+                      <button type="button" data-trans="Bicicleta" class="btnTransporte h-10 flex items-center justify-center rounded-lg border text-xs font-medium cursor-pointer border-neutral-300 bg-white text-neutral-600">Bicicleta</button>
+                      <button type="button" data-trans="Ônibus" class="btnTransporte h-10 flex items-center justify-center rounded-lg border text-xs font-medium cursor-pointer border-neutral-300 bg-white text-neutral-600">Ônibus</button>
+                      <button type="button" data-trans="Aplicativo" class="btnTransporte h-10 flex items-center justify-center rounded-lg border text-xs font-medium cursor-pointer border-neutral-300 bg-white text-neutral-600">Aplicativo</button>
+                      <button type="button" data-trans="Carona" class="btnTransporte h-10 flex items-center justify-center rounded-lg border text-xs font-medium cursor-pointer border-neutral-300 bg-white text-neutral-600">Carona</button>
+                      <button type="button" data-trans="Outro" class="btnTransporte h-10 flex items-center justify-center rounded-lg border text-xs font-medium cursor-pointer border-neutral-300 bg-white text-neutral-600 col-span-2 sm:col-span-1">Outro</button>
                     </div>
                   </div>
+                </div>
+
+                <!-- Navigation footer for Step 8 -->
+                <div class="pt-4 border-t border-neutral-100 flex items-center justify-between gap-3 mt-6">
+                  <button
+                    type="button"
+                    id="backBtn-8"
+                    class="h-11 px-4 rounded-xl border border-neutral-300 text-neutral-600 font-medium text-sm flex items-center justify-center gap-1.5 hover:bg-neutral-50 active:scale-95 transition-all duration-150 cursor-pointer"
+                  >
+                    <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                    <span>Voltar</span>
+                  </button>
+                  <button
+                    type="button"
+                    id="nextBtn-8"
+                    class="h-11 px-5 rounded-xl text-white font-medium text-sm flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 shadow-xs active:scale-97 flex-1 bg-sage-400 hover:bg-sage-500 shadow-sage-200/50"
+                  >
+                    <span id="nextBtnText-8">Avançar</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 shrink-0"></i>
+                  </button>
                 </div>
               </div>
 
@@ -555,16 +751,36 @@
                   <button
                     type="button"
                     id="dispostaAtividadesSim"
-                    class="h-14 flex items-center justify-center rounded-xl border text-base font-semibold transition-all duration-150 cursor-pointer border-neutral-200 bg-white lg:hover:border-neutral-350 text-neutral-600"
+                    class="h-14 flex items-center justify-center rounded-xl border text-base font-semibold transition-all duration-150 cursor-pointer border-neutral-200 bg-white lg:hover:border-neutral-300 text-neutral-600"
                   >
                     Sim
                   </button>
                   <button
                     type="button"
                     id="dispostaAtividadesNao"
-                    class="h-14 flex items-center justify-center rounded-xl border text-base font-semibold transition-all duration-150 cursor-pointer border-neutral-200 bg-white lg:hover:border-neutral-350 text-neutral-600"
+                    class="h-14 flex items-center justify-center rounded-xl border text-base font-semibold transition-all duration-150 cursor-pointer border-neutral-200 bg-white lg:hover:border-neutral-300 text-neutral-600"
                   >
                     Não
+                  </button>
+                </div>
+
+                <!-- Navigation footer for Step 9 -->
+                <div class="pt-4 border-t border-neutral-100 flex items-center justify-between gap-3 mt-6">
+                  <button
+                    type="button"
+                    id="backBtn-9"
+                    class="h-11 px-4 rounded-xl border border-neutral-300 text-neutral-600 font-medium text-sm flex items-center justify-center gap-1.5 hover:bg-neutral-50 active:scale-95 transition-all duration-150 cursor-pointer"
+                  >
+                    <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                    <span>Voltar</span>
+                  </button>
+                  <button
+                    type="button"
+                    id="nextBtn-9"
+                    class="h-11 px-5 rounded-xl text-white font-medium text-sm flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 shadow-xs active:scale-97 flex-1 bg-sage-400 hover:bg-sage-500 shadow-sage-200/50"
+                  >
+                    <span id="nextBtnText-9">Avançar</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 shrink-0"></i>
                   </button>
                 </div>
               </div>
@@ -615,6 +831,26 @@
                     ></textarea>
                   </div>
                 </div>
+
+                <!-- Navigation footer for Step 10 -->
+                <div class="pt-4 border-t border-neutral-100 flex items-center justify-between gap-3 mt-6">
+                  <button
+                    type="button"
+                    id="backBtn-10"
+                    class="h-11 px-4 rounded-xl border border-neutral-300 text-neutral-600 font-medium text-sm flex items-center justify-center gap-1.5 hover:bg-neutral-50 active:scale-95 transition-all duration-150 cursor-pointer"
+                  >
+                    <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                    <span>Voltar</span>
+                  </button>
+                  <button
+                    type="button"
+                    id="nextBtn-10"
+                    class="h-11 px-5 rounded-xl text-white font-medium text-sm flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 shadow-xs active:scale-97 flex-1 bg-sage-400 hover:bg-sage-500 shadow-sage-200/50"
+                  >
+                    <span id="nextBtnText-10">Avançar</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 shrink-0"></i>
+                  </button>
+                </div>
               </div>
 
               <!-- STEP 11: FORM_SALARY -->
@@ -636,25 +872,45 @@
                     <span class="text-xs text-neutral-400 uppercase tracking-widest font-semibold scale-90 -mb-0.5">Mensal</span>
                     <span class="text-sm font-semibold">R$ 800</span>
                   </button>
-                  <button type="button" data-salary="R$ 900" class="btnPretensao h-12 flex flex-col items-center justify-center rounded-xl border transition-all duration-155 cursor-pointer border-neutral-200 bg-white text-neutral-650">
+                  <button type="button" data-salary="R$ 900" class="btnPretensao h-12 flex flex-col items-center justify-center rounded-xl border transition-all duration-155 cursor-pointer border-neutral-200 bg-white text-neutral-600">
                     <span class="text-xs text-neutral-400 uppercase tracking-widest font-semibold scale-90 -mb-0.5">Mensal</span>
                     <span class="text-sm font-semibold">R$ 900</span>
                   </button>
-                  <button type="button" data-salary="R$ 1.000" class="btnPretensao h-12 flex flex-col items-center justify-center rounded-xl border transition-all duration-155 cursor-pointer border-neutral-200 bg-white text-neutral-650">
+                  <button type="button" data-salary="R$ 1.000" class="btnPretensao h-12 flex flex-col items-center justify-center rounded-xl border transition-all duration-155 cursor-pointer border-neutral-200 bg-white text-neutral-600">
                     <span class="text-xs text-neutral-400 uppercase tracking-widest font-semibold scale-90 -mb-0.5">Mensal</span>
                     <span class="text-sm font-semibold">R$ 1.000</span>
                   </button>
-                  <button type="button" data-salary="R$ 1.100" class="btnPretensao h-12 flex flex-col items-center justify-center rounded-xl border transition-all duration-155 cursor-pointer border-neutral-200 bg-white text-neutral-650">
+                  <button type="button" data-salary="R$ 1.100" class="btnPretensao h-12 flex flex-col items-center justify-center rounded-xl border transition-all duration-155 cursor-pointer border-neutral-200 bg-white text-neutral-600">
                     <span class="text-xs text-neutral-400 uppercase tracking-widest font-semibold scale-90 -mb-0.5">Mensal</span>
                     <span class="text-sm font-semibold">R$ 1.100</span>
                   </button>
-                  <button type="button" data-salary="R$ 1.200" class="btnPretensao h-12 flex flex-col items-center justify-center rounded-xl border transition-all duration-155 cursor-pointer border-neutral-200 bg-white text-neutral-650">
+                  <button type="button" data-salary="R$ 1.200" class="btnPretensao h-12 flex flex-col items-center justify-center rounded-xl border transition-all duration-155 cursor-pointer border-neutral-200 bg-white text-neutral-600">
                     <span class="text-xs text-neutral-400 uppercase tracking-widest font-semibold scale-90 -mb-0.5">Mensal</span>
                     <span class="text-sm font-semibold">R$ 1.200</span>
                   </button>
-                  <button type="button" data-salary="R$ 1.300" class="btnPretensao h-12 flex flex-col items-center justify-center rounded-xl border transition-all duration-155 cursor-pointer border-neutral-200 bg-white text-neutral-650">
+                  <button type="button" data-salary="R$ 1.300" class="btnPretensao h-12 flex flex-col items-center justify-center rounded-xl border transition-all duration-155 cursor-pointer border-neutral-200 bg-white text-neutral-600">
                     <span class="text-xs text-neutral-400 uppercase tracking-widest font-semibold scale-90 -mb-0.5">Mensal</span>
                     <span class="text-sm font-semibold">R$ 1.300</span>
+                  </button>
+                </div>
+
+                <!-- Navigation footer for Step 11 -->
+                <div class="pt-4 border-t border-neutral-100 flex items-center justify-between gap-3 mt-6">
+                  <button
+                    type="button"
+                    id="backBtn-11"
+                    class="h-11 px-4 rounded-xl border border-neutral-300 text-neutral-600 font-medium text-sm flex items-center justify-center gap-1.5 hover:bg-neutral-50 active:scale-95 transition-all duration-150 cursor-pointer"
+                  >
+                    <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                    <span>Voltar</span>
+                  </button>
+                  <button
+                    type="button"
+                    id="nextBtn-11"
+                    class="h-11 px-5 rounded-xl text-white font-medium text-sm flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 shadow-xs active:scale-97 flex-1 bg-sage-400 hover:bg-sage-500 shadow-sage-200/50"
+                  >
+                    <span id="nextBtnText-11">Avançar</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 shrink-0"></i>
                   </button>
                 </div>
               </div>
@@ -686,7 +942,7 @@
                 </div>
 
                 <!-- Review Accordion Box summarizing input responses -->
-                <div class="border border-neutral-200 rounded-xl max-h-52 overflow-y-auto bg-neutral-50/50 p-3.5 space-y-4 text-left">
+                <div class="border border-neutral-200 rounded-xl bg-neutral-50/50 p-3.5 space-y-4 text-left">
                   <p class="text-[10px] font-bold text-neutral-400 uppercase tracking-wider border-b border-neutral-150 pb-1.5">Resumo das respostas fornecidas</p>
                   
                   <!-- Dados Pessoais -->
@@ -748,7 +1004,7 @@
                       <input
                         type="checkbox"
                         id="revisaoConfirmada"
-                        class="peer appearance-none w-5 h-5 border border-neutral-350 rounded-md checked:bg-sage-400 checked:border-sage-400 focus:outline bg-white cursor-pointer transition-all duration-150"
+                        class="peer appearance-none w-5 h-5 border border-neutral-300 rounded-md checked:bg-sage-400 checked:border-sage-400 focus:outline bg-white cursor-pointer transition-all duration-150"
                       />
                       <i data-lucide="check" class="absolute w-3.5 h-3.5 text-white pointer-events-none left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-0 peer-checked:scale-100 transition-transform duration-150"></i>
                     </div>
@@ -757,34 +1013,31 @@
                     </span>
                   </label>
                 </div>
+
+                <!-- Navigation footer for Step 12 -->
+                <div class="pt-4 border-t border-neutral-100 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 mt-6">
+                  <button
+                    type="button"
+                    id="backBtn-12"
+                    class="h-11 px-4 rounded-xl border border-neutral-300 text-neutral-600 font-medium text-sm flex items-center justify-center gap-1.5 hover:bg-neutral-50 active:scale-95 transition-all duration-150 cursor-pointer"
+                  >
+                    <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                    <span>Voltar</span>
+                  </button>
+                  <button
+                    type="button"
+                    id="nextBtn-12"
+                    class="h-12 px-5 rounded-xl text-white font-semibold text-sm flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 shadow-md active:scale-97 flex-1 bg-emerald-600 hover:bg-emerald-700 shadow-emerald-200/50"
+                  >
+                    <span id="nextBtnText-12">ENVIAR CANDIDATURA PELO WHATSAPP</span>
+                    <i data-lucide="send" class="w-4 h-4 shrink-0"></i>
+                  </button>
+                </div>
               </div>
 
             </section>
 
-            <!-- Footer Card Action Navigation buttons -->
-            <footer id="navFooter" class="pt-4 border-t border-neutral-100 flex items-center justify-between gap-3 mt-4">
-              <!-- Back button -->
-              <button
-                type="button"
-                id="backBtn"
-                class="h-11 px-4 rounded-none border border-neutral-250 text-neutral-600 font-medium text-sm flex items-center justify-center gap-1.5 hover:bg-neutral-50 active:scale-95 transition-all duration-150 cursor-pointer hidden"
-              >
-                <i data-lucide="chevron-left" class="w-4 h-4"></i>
-                <span>Voltar</span>
-              </button>
-              
-              <div id="backSpacer" class="w-5 h-5 flex-1 max-w-[20px]"></div>
 
-              <!-- Next/Action step button -->
-              <button
-                type="button"
-                id="nextBtn"
-                class="h-11 px-5 rounded-none text-white font-medium text-sm flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 shadow-xs active:scale-97 flex-1 xs:flex-initial bg-sage-400 hover:bg-sage-500 shadow-sage-200/50"
-              >
-                <span id="nextBtnText">Começar</span>
-                <i id="btnIcon" data-lucide="chevron-right" class="w-4 h-4 shrink-0"></i>
-              </button>
-            </footer>
 
           </div>
         </div>
@@ -798,14 +1051,14 @@
       </div>
 
       <!-- Compact page footer -->
-      <footer class="w-full text-center text-[10px] text-neutral-350 py-4 font-sans tracking-wide">
+      <footer class="w-full text-center text-[10px] text-neutral-400 py-4 font-sans tracking-wide">
         © 2026 VAGAFORM
       </footer>
     </main>
 
-    <!-- Successfully Completed Modal Popup Overlay -->
+    <!-- Automatically Completed Modal Popup Overlay -->
     <div id="successModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4 hidden">
-      <div class="bg-white rounded-none p-6 md:p-8 max-w-sm w-full text-center shadow-xl border border-neutral-200">
+      <div class="bg-white rounded-2xl p-6 md:p-8 max-w-sm w-full text-center shadow-xl border border-neutral-200">
         
         <div class="w-16 h-16 bg-sage-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-sage-100">
           <i data-lucide="check-circle-2" class="w-9 h-9 text-sage-500"></i>
@@ -823,7 +1076,7 @@
           <button
             type="button"
             id="reopenWaBtn"
-            class="w-full h-11 bg-sage-400 hover:bg-sage-500 text-white font-medium rounded-none text-sm transition-all duration-150 flex items-center justify-center gap-2 cursor-pointer shadow-sm active:scale-98"
+            class="w-full h-11 bg-sage-400 hover:bg-sage-500 text-white font-medium rounded-xl text-sm transition-all duration-150 flex items-center justify-center gap-2 cursor-pointer shadow-sm active:scale-98"
           >
             <i data-lucide="send" class="w-4 h-4"></i>
             <span>Reabrir WhatsApp</span>
@@ -832,7 +1085,7 @@
           <button
             type="button"
             id="closeModalBtn"
-            class="w-full h-10 border border-neutral-250 hover:bg-neutral-50 text-neutral-650 font-medium rounded-none text-xs transition-all duration-150 cursor-pointer"
+            class="w-full h-10 border border-neutral-300 hover:bg-neutral-50 text-neutral-600 font-medium rounded-xl text-xs transition-all duration-150 cursor-pointer"
           >
             Voltar ao site
           </button>
