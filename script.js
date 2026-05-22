@@ -347,8 +347,17 @@ function navigateToStep(targetIndex) {
   toggleNextButtonState();
   persistState();
 
-  // Smooth top window alignment for mobile devices
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Remove focus from any active elements to prevent mobile keyboards/zooms/scrolls on transition
+  if (document.activeElement && typeof document.activeElement.blur === 'function') {
+    document.activeElement.blur();
+  }
+
+  // Force absolute instant scroll to top across Android, iOS and all browsers
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  // Browser fallbacks for deep mobile compatibility
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
 }
 
 // Constructs final summary template and opens Whatsapp link
@@ -360,20 +369,20 @@ function sendApplicationToWhatsApp() {
   const fIdade = /^\d+$/.test(rawIdade) ? rawIdade + ' ANOS' : rawIdade;
   const fBairro = (data.bairro || '').trim().toUpperCase();
   const fFilhos = (data.possuiFilhos || '').trim().toUpperCase();
-  const fQtdFilhos = (data.possuiFilhos === 'Sim' ? (data.quantidadeFilhos || '') : 'Não se aplica').trim().toUpperCase();
+  const fQtdFilhos = (data.possuiFilhos === 'Sim' ? (data.quantidadeFilhos || '') : 'NÃO SE APLICA').trim().toUpperCase();
   const fWhatsapp = (data.whatsapp || '').trim().toUpperCase();
-  const fSocial = ((data.redeSocial || '').trim() || 'Não informada').toUpperCase();
+  const fSocial = ((data.redeSocial || '').trim() || 'NÃO INFORMADA').toUpperCase();
   const fTrabBaba = (data.trabalhouComoBaba || '').trim().toUpperCase();
-  const fTempoExp = (data.trabalhouComoBaba === 'Sim' ? (data.tempoExperiencia || '') : 'Não se aplica').trim().toUpperCase();
+  const fTempoExp = (data.trabalhouComoBaba === 'Sim' ? (data.tempoExperiencia || '') : 'NÃO SE APLICA').trim().toUpperCase();
   const fTranspProprio = (data.possuiTransporteProprio || '').trim().toUpperCase();
-  const fTranspUtilizado = (data.possuiTransporteProprio === 'Sim' ? (data.transporteUtilizado || '') : 'Não se aplica').trim().toUpperCase();
+  const fTranspUtilizado = (data.possuiTransporteProprio === 'Sim' ? (data.transporteUtilizado || '') : 'NÃO SE APLICA').trim().toUpperCase();
   const fDispostaAtiv = (data.dispostaAtividades || '').trim().toUpperCase();
   const fProbSaude = (data.possuiProblemaSaude || '').trim().toUpperCase();
   const fDescLimitacao = (data.possuiProblemaSaude === 'Sim' ? ((data.descricaoLimitacao || '').trim() || 'NENHUMA') : 'NENHUMA').trim().toUpperCase();
   const fPretensao = (data.pretensaoSalarial || '').trim().toUpperCase();
 
-  const dateStr = new Date().toLocaleDateString('pt-BR');
-  const timeStr = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+  const dateStr = new Date().toLocaleDateString('pt-BR').toUpperCase();
+  const timeStr = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }).toUpperCase();
 
   const message = `👶 NOVA CANDIDATURA PARA BABÁ
 
@@ -400,7 +409,7 @@ ${fQtdFilhos}
 
 📞 CONTATO
 
-WHATSAPP:
+📱 WHATSAPP:
 ${fWhatsapp}
 
 📱 REDE SOCIAL:
@@ -408,9 +417,7 @@ ${fSocial}
 
 ━━━━━━━━━━━━━━
 
-🧸 EXPERIÊNCIA
-
-JÁ TRABALHOU COMO BABÁ:
+👶 EXPERIÊNCIA COMO BABÁ:
 ${fTrabBaba}
 
 TEMPO:
@@ -418,9 +425,7 @@ ${fTempoExp}
 
 ━━━━━━━━━━━━━━
 
-🚗 TRANSPORTE
-
-POSSUI TRANSPORTE PRÓPRIO:
+🚗 TRANSPORTE:
 ${fTranspProprio}
 
 MEIO UTILIZADO:
@@ -428,16 +433,12 @@ ${fTranspUtilizado}
 
 ━━━━━━━━━━━━━━
 
-🍼 ATIVIDADES DA VAGA
-
-DISPOSTA A REALIZAR TODAS AS ATIVIDADES:
+✅ DISPOSTA A REALIZAR AS ATIVIDADES:
 ${fDispostaAtiv}
 
 ━━━━━━━━━━━━━━
 
-🏥 SAÚDE
-
-POSSUI LIMITAÇÃO:
+🏥 SAÚDE:
 ${fProbSaude}
 
 DESCRIÇÃO:
@@ -445,30 +446,24 @@ ${fDescLimitacao}
 
 ━━━━━━━━━━━━━━
 
-💰 PRETENSÃO SALARIAL
-
+💰 PRETENSÃO SALARIAL:
 ${fPretensao}
 
 ━━━━━━━━━━━━━━
 
-✅ CONFIRMAÇÕES
-
-✓ LEU AS INFORMAÇÕES DA VAGA
-
-✓ ACEITOU AS RESPONSABILIDADES
-
-✓ ACEITOU AS CONDIÇÕES DE PONTUALIDADE
-
-✓ ACEITOU AS REGRAS DE CONDUTA
-
-✓ CONFIRMOU O ENVIO DA CANDIDATURA
+📋 CONFIRMAÇÕES:
+✅ LEU AS INFORMAÇÕES DA VAGA
+✅ ACEITOU AS RESPONSABILIDADES
+✅ ACEITOU AS REGRAS DE COMPROMISSO
+✅ ACEITOU AS REGRAS DE CONDUTA
+✅ CONFIRMOU O ENVIO DA CANDIDATURA
 
 ━━━━━━━━━━━━━━
 
-📅 DATA:
+🕒 DATA:
 ${dateStr}
 
-🕒 HORA:
+⏰ HORA:
 ${timeStr}`;
 
   const encodedMessage = encodeURIComponent(message);
