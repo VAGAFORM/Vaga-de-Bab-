@@ -106,7 +106,7 @@ function validateCurrentStep() {
     case 9: // FORM_ACTIVITIES
       return data.dispostaAtividades !== '';
     case 10: // FORM_HEALTH
-      return data.possuiProblemaSaude === 'Não' || (data.possuiProblemaSaude === 'Sim' && data.descricaoLimitacao.trim().length >= 3);
+      return data.possuiProblemaSaude === 'Não';
     case 11: // FORM_SALARY
       return data.pretensaoSalarial !== '';
     case 12: // FORM_CONFIRMATION
@@ -246,11 +246,21 @@ function syncFormFieldsWithData() {
   highlightActiveButton(healthProblemNao, data.possuiProblemaSaude === 'Não');
 
   const painelLimitacaoSaude = document.getElementById('painelLimitacaoSaude');
+  const painelRejeicaoSaude = document.getElementById('painelRejeicaoSaude');
+  const nextBtn10 = document.getElementById('nextBtn-10');
+
   if (data.possuiProblemaSaude === 'Sim') {
-    painelLimitacaoSaude.classList.remove('hidden');
-    document.getElementById('limitDescription').value = data.descricaoLimitacao;
+    if (painelRejeicaoSaude) painelRejeicaoSaude.classList.remove('hidden');
+    if (painelLimitacaoSaude) painelLimitacaoSaude.classList.add('hidden');
+    if (nextBtn10) nextBtn10.classList.add('hidden');
+  } else if (data.possuiProblemaSaude === 'Não') {
+    if (painelRejeicaoSaude) painelRejeicaoSaude.classList.add('hidden');
+    if (painelLimitacaoSaude) painelLimitacaoSaude.classList.add('hidden');
+    if (nextBtn10) nextBtn10.classList.remove('hidden');
   } else {
-    painelLimitacaoSaude.classList.add('hidden');
+    if (painelRejeicaoSaude) painelRejeicaoSaude.classList.add('hidden');
+    if (painelLimitacaoSaude) painelLimitacaoSaude.classList.add('hidden');
+    if (nextBtn10) nextBtn10.classList.remove('hidden');
   }
 
   // Step 11 Salary pretensão
@@ -377,14 +387,12 @@ function sendApplicationToWhatsApp() {
   const fTranspProprio = (data.possuiTransporteProprio || '').trim().toUpperCase();
   const fTranspUtilizado = (data.possuiTransporteProprio === 'Sim' ? (data.transporteUtilizado || '') : 'NÃO SE APLICA').trim().toUpperCase();
   const fDispostaAtiv = (data.dispostaAtividades || '').trim().toUpperCase();
-  const fProbSaude = (data.possuiProblemaSaude || '').trim().toUpperCase();
-  const fDescLimitacao = (data.possuiProblemaSaude === 'Sim' ? ((data.descricaoLimitacao || '').trim() || 'NENHUMA') : 'NENHUMA').trim().toUpperCase();
   const fPretensao = (data.pretensaoSalarial || '').trim().toUpperCase();
 
   const dateStr = new Date().toLocaleDateString('pt-BR').toUpperCase();
   const timeStr = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }).toUpperCase();
 
-  const message = `👶 NOVA CANDIDATURA PARA BABÁ
+  const message = `👶 NOVA CANDIDATA PARA BABÁ
 
 ━━━━━━━━━━━━━━
 
@@ -417,6 +425,8 @@ ${fSocial}
 
 ━━━━━━━━━━━━━━
 
+🧸 EXPERIÊNCIA
+
 👶 EXPERIÊNCIA COMO BABÁ:
 ${fTrabBaba}
 
@@ -424,6 +434,8 @@ TEMPO:
 ${fTempoExp}
 
 ━━━━━━━━━━━━━━
+
+🚗 TRANSPORTE
 
 🚗 TRANSPORTE:
 ${fTranspProprio}
@@ -433,25 +445,22 @@ ${fTranspUtilizado}
 
 ━━━━━━━━━━━━━━
 
+🍼 ATIVIDADES DA VAGA
+
 ✅ DISPOSTA A REALIZAR AS ATIVIDADES:
 ${fDispostaAtiv}
 
 ━━━━━━━━━━━━━━
 
-🏥 SAÚDE:
-${fProbSaude}
-
-DESCRIÇÃO:
-${fDescLimitacao}
-
-━━━━━━━━━━━━━━
+💰 PRETENSÃO SALARIAL
 
 💰 PRETENSÃO SALARIAL:
 ${fPretensao}
 
 ━━━━━━━━━━━━━━
 
-📋 CONFIRMAÇÕES:
+📋 CONFIRMAÇÕES
+
 ✅ LEU AS INFORMAÇÕES DA VAGA
 ✅ ACEITOU AS RESPONSABILIDADES
 ✅ ACEITOU AS REGRAS DE COMPROMISSO
@@ -460,10 +469,10 @@ ${fPretensao}
 
 ━━━━━━━━━━━━━━
 
-🕒 DATA:
+📅 DATA:
 ${dateStr}
 
-⏰ HORA:
+🕒 HORA:
 ${timeStr}`;
 
   const encodedMessage = encodeURIComponent(message);
