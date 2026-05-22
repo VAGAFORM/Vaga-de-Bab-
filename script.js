@@ -333,10 +333,12 @@ function navigateToStep(targetIndex) {
 
   if (currentStepIndex === 0) {
     nextBtnText.textContent = 'Começar';
+  } else if (currentStepIndex >= 1 && currentStepIndex <= 3) {
+    nextBtnText.textContent = 'Próxima etapa';
   } else if (currentStepIndex === 4) {
     nextBtnText.textContent = 'Iniciar candidatura';
   } else if (currentStepIndex === 12) {
-    nextBtnText.textContent = 'Enviar';
+    nextBtnText.textContent = 'ENVIAR CANDIDATURA PELO WHATSAPP';
   } else {
     nextBtnText.textContent = 'Avançar';
   }
@@ -367,7 +369,7 @@ function navigateToStep(targetIndex) {
 
 // Constructs final summary template and opens Whatsapp link
 function sendApplicationToWhatsApp() {
-  const number = '5593991580195';
+  const number = '5593996589790';
 
   const fNome = data.nome.trim();
   const fIdade = data.idade.trim();
@@ -388,7 +390,7 @@ function sendApplicationToWhatsApp() {
   const dateStr = new Date().toLocaleDateString('pt-BR');
   const timeStr = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 
-  const message = `*NOVA CANDIDATURA PARA BABÁ*
+  const message = `NOVA CANDIDATURA PARA BABÁ
 
 *DADOS PESSOAIS*
 
@@ -428,16 +430,15 @@ function sendApplicationToWhatsApp() {
 
 *CONFIRMAÇÕES*
 
-✓ Leu e compreendeu as informações da vaga
-✓ Leu e concordou com as responsabilidades da vaga
-✓ Leu e compreendeu as regras de pontualidade e compromisso
-✓ Leu e concordou com as regras de conduta
-✓ Confirmou que as informações fornecidas são verdadeiras
+✓ Leu e aceitou as informações da vaga
+✓ Concordou com as responsabilidades
+✓ Compreendeu as regras de compromisso
+✓ Concordou com as regras de conduta
 
-*Data do envio:* ${dateStr}
-*Hora do envio:* ${timeStr}`;
+Data do envio: ${dateStr}
+Hora do envio: ${timeStr}`;
 
-  const encodedMessage = encodeURIComponent(message.toUpperCase());
+  const encodedMessage = encodeURIComponent(message);
   const waUrl = `https://wa.me/${number}?text=${encodedMessage}`;
 
   // Highlight completed status and trigger Whatsapp window
