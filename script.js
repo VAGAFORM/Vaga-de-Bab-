@@ -299,18 +299,24 @@ function navigateToStep(targetIndex) {
   }
 
   // Adjust headers
-  const isTermStep = currentStepIndex < 5;
-  document.getElementById('stepHeaderLabel').textContent = isTermStep ? 'Termos e Condições' : 'Formulário de Entrada';
-
-  let subHeader = '';
-  if (currentStepIndex === 0) {
-    subHeader = 'Iniciando Processo';
-  } else if (currentStepIndex < 5) {
-    subHeader = `Termos e Condições — Parte ${currentStepIndex} de 4`;
-  } else {
-    subHeader = `Formulário de Entrada — Etapa ${currentStepIndex - 4} de 8`;
+  const stepHeaderLabel = document.getElementById('stepHeaderLabel');
+  if (stepHeaderLabel) {
+    const isTermStep = currentStepIndex < 5;
+    stepHeaderLabel.textContent = isTermStep ? 'Termos e Condições' : 'Formulário de Entrada';
   }
-  document.getElementById('stepSubHeaderLabel').textContent = subHeader;
+
+  const stepSubHeaderLabel = document.getElementById('stepSubHeaderLabel');
+  if (stepSubHeaderLabel) {
+    let subHeader = '';
+    if (currentStepIndex === 0) {
+      subHeader = 'Iniciando Processo';
+    } else if (currentStepIndex < 5) {
+      subHeader = `Termos e Condições — Parte ${currentStepIndex} de 4`;
+    } else {
+      subHeader = `Formulário de Entrada — Etapa ${currentStepIndex - 4} de 8`;
+    }
+    stepSubHeaderLabel.textContent = subHeader;
+  }
 
   // Toggle footer structures
   const backBtn = document.getElementById('backBtn');

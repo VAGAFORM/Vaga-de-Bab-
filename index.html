@@ -75,16 +75,6 @@
 
           <div class="p-6 md:p-8 flex-1 flex flex-col justify-between">
             
-            <!-- Header Steps indicator -->
-            <header class="mb-6 flex justify-between items-center text-xs text-neutral-400 font-semibold border-b border-neutral-50 pb-3">
-              <span id="stepHeaderLabel" class="uppercase tracking-wider text-sage-600 font-semibold">
-                Termos e Condições
-              </span>
-              <span id="stepSubHeaderLabel">
-                Iniciando Processo
-              </span>
-            </header>
-
             <!-- Steps Views Containers (0 to 12) -->
             <section class="flex-1 flex flex-col justify-center min-h-[280px] md:min-h-[300px]">
               
@@ -108,7 +98,9 @@
                     O preenchimento é rápido e, no final, as respostas serão enviadas de forma organizada pelo seu WhatsApp direto para análise.
                   </span>
                 </div>
-                     <!-- STEP 1: ABOUT_JOB -->
+              </div>
+
+              <!-- STEP 1: ABOUT_JOB -->
               <div id="step-1" class="step-view hidden space-y-6">
                 <div class="text-center pb-2">
                   <div class="w-12 h-12 bg-sage-50 rounded-full flex items-center justify-center mx-auto mb-2 border border-sage-100 font-poppins">
@@ -117,22 +109,46 @@
                   <h2 class="text-xl font-semibold text-neutral-800 font-poppins">Sobre a vaga</h2>
                 </div>
 
-                <div class="bg-neutral-50 p-5 rounded-xl border border-neutral-100 space-y-3.5 text-left text-sm text-neutral-700">
-                  <div class="flex items-center gap-3">
-                    <span class="w-1.5 h-1.5 bg-sage-500 rounded-full shrink-0"></span>
-                    <span class="font-medium">Santarém/PA</span>
+                <div class="space-y-4 px-2 text-left text-[14px] text-neutral-700 leading-relaxed">
+                  <div class="flex items-start gap-2.5">
+                    <i data-lucide="map-pin" class="w-5 h-5 text-sage-500 shrink-0 mt-0.5"></i>
+                    <div>
+                      <span class="font-bold text-neutral-800">Local de trabalho:</span>
+                      <p class="text-neutral-600 mt-0.5">Próximo ao Parque da Cidade — Santarém/PA</p>
+                    </div>
                   </div>
-                  <div class="flex items-center gap-3">
-                    <span class="w-1.5 h-1.5 bg-sage-500 rounded-full shrink-0"></span>
-                    <span class="font-medium">Criança de 2 anos</span>
+
+                  <div class="flex items-start gap-2.5">
+                    <i data-lucide="baby" class="w-5 h-5 text-sage-500 shrink-0 mt-0.5"></i>
+                    <div>
+                      <span class="font-bold text-neutral-800">Criança:</span>
+                      <p class="text-neutral-600 mt-0.5">Menina de 2 anos</p>
+                    </div>
                   </div>
-                  <div class="flex items-center gap-3">
-                    <span class="w-1.5 h-1.5 bg-sage-500 rounded-full shrink-0"></span>
-                    <span class="font-medium">Segunda a sexta: 08h30 às 16h30</span>
-                  </div>
-                  <div class="flex items-center gap-3">
-                    <span class="w-1.5 h-1.5 bg-sage-500 rounded-full shrink-0"></span>
-                    <span class="font-medium">Sábado: 08h30 às 12h30</span>
+
+                  <div class="flex items-start gap-2.5">
+                    <i data-lucide="clock" class="w-5 h-5 text-sage-500 shrink-0 mt-0.5"></i>
+                    <div>
+                      <span class="font-bold text-neutral-800">Horário:</span>
+                      <ul class="space-y-1.5 mt-1.5 text-neutral-600 text-[13.5px]">
+                        <li class="flex items-start gap-2">
+                          <span class="text-sage-500 shrink-0 select-none">•</span>
+                          <span>Segunda a sexta-feira: 08h30 às 16h30</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                          <span class="text-sage-500 shrink-0 select-none">•</span>
+                          <span>Sábado: 08h30 às 12h30</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                          <span class="text-sage-500 shrink-0 select-none">•</span>
+                          <span>Domingo: Folga</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                          <span class="text-sage-500 shrink-0 select-none">•</span>
+                          <span>Feriados serão avaliados conforme necessidade</span>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
 
